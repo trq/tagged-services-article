@@ -1,9 +1,21 @@
-# Learn more about services, parameters and containers at
-# http://symfony.com/doc/current/book/service_container.html
 # app/config/services.yml
 parameters:
-#    parameter_name: value
 
 services:
   app.rule_manager:
     class: AppBundle\Service\RuleManager
+
+  app.rule_manager.is_numeric:
+    class: AppBundle\RuleManager\IsNumericRule
+    tags:
+      - { name: rule_manager.rule }
+
+  app.rule_manager.greater_than:
+    class: AppBundle\RuleManager\GreaterThanRule
+    tags:
+      - { name: rule_manager.rule }
+
+  app.rule_manager.less_then:
+    class: AppBundle\RuleManager\LessThanRule
+    tags:
+      - { name: rule_manager.rule }
